@@ -27,7 +27,7 @@
 | user               | references | null: false              |
 ### Association
 - belongs_to : user
-- has_one : purchases
+- has_one : purchase
 
 ## purchases テーブル
 | Column             | Type       | Options                  |

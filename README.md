@@ -24,17 +24,17 @@
 | ------------------ | -------- | ------------------------ |
 | item_name          | string   | null: false              |
 | description        | text     | null: false              |
-| category           | integer  | null: false              |
+| category_id        | integer  | null: false              |
 | item_situation_id  | integer  | null: false              |
-| delivery_load      | integer  | null: false              |
-| prefectures        | integer  | null: false              |
+| delivery_load_id   | integer  | null: false              |
+| prefectures_id     | integer  | null: false              |
 | sender_days        | integer  | null: false              |
 | price              | integer  | null: false              |
 | user_id            | string   | null: false              |
 
 ### Association
-- belongs to : user
-- has_one : purchases
+- belongs_to : user
+- has_many : purchases
 
 
 ## purchases テーブル
@@ -45,8 +45,8 @@
 | item_id            | string   | null: false              |
 
 ### Association
-- belongs to : user
-- belongs to : item
+- belongs_to : user
+- belongs_to : item
 - has_one : address
 
 
@@ -54,13 +54,13 @@
 
 | Column             | Type     | Options                  |
 | ------------------ | -------- | ------------------------ |
-| post_code          | integer  | null: false              |
-| prefectures        | string   | null: false              |
-| municipalitie      | integer  | null: false              |
+| post_code          | string   | null: false              |
+| prefectures_id     | string   | null: false              |
+| municipalitie      | string   | null: false              |
 | address            | string   | null: false              |
 | building_name      | string   |                          |
 | phone_number       | string   | null: false              |
 
 
 ### Association
-- belongs to : purchase
+- belongs_to : purchase

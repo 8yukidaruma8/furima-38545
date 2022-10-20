@@ -11,7 +11,7 @@
 | date_of_birth      | date     | null: false              |
 ### Association
 - has_many : items
-- has_one : purchases
+- has_many : purchases
 
 ## items テーブル
 | Column             | Type       | Options                  |
@@ -27,7 +27,7 @@
 | user               | references | null: false              |
 ### Association
 - belongs_to : user
-- has_many : purchases
+- has_one : purchases
 
 ## purchases テーブル
 | Column             | Type       | Options                  |

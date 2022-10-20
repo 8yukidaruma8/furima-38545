@@ -22,15 +22,18 @@
 
 | Column             | Type     | Options                  |
 | ------------------ | -------- | ------------------------ |
-| item_image         | string   | null: false              |
 | item_name          | string   | null: false              |
-| Description        | text     | null: false              |
-| category           | string   | null: false              |
-| item_situation     | string   | null: false              |
+| description        | text     | null: false              |
+| category           | integer  | null: false              |
+| item_situation_id  | integer  | null: false              |
+| delivery_load      | integer  | null: false              |
+| prefectures        | integer  | null: false              |
+| sender_days        | integer  | null: false              |
 | price              | integer  | null: false              |
+| user_id            | string   | null: false              |
 
 ### Association
-- belongs to : users
+- belongs to : user
 - has_one : purchases
 
 
@@ -38,26 +41,26 @@
 
 | Column             | Type     | Options                  |
 | ------------------ | -------- | ------------------------ |
-| delivery_load      | string   | null: false              |
-| sender_area        | string   | null: false              |
-| sender_days        | datetime | null: false              |
+| user_id            | string   | null: false              |
+| item_id            | string   | null: false              |
 
 ### Association
-- belongs to : users
-- belongs to : items
-- has_one : addresses
+- belongs to : user
+- belongs to : item
+- has_one : address
 
 
 ## addresses　テーブル
 
-| Column             | Type    | Options                  |
-| ------------------ | ------- | ------------------------ |
-| post_code          | string  | null: false              |
-| prefectures        | string  | null: false              |
-| municipalities     | string  | null: false              |
-| address            | string  | null: false              |
-| Building_name      | string  |                          |
-| phone_number       | integer | null: false              |
+| Column             | Type     | Options                  |
+| ------------------ | -------- | ------------------------ |
+| post_code          | integer  | null: false              |
+| prefectures        | string   | null: false              |
+| municipalitie      | integer  | null: false              |
+| address            | string   | null: false              |
+| building_name      | string   |                          |
+| phone_number       | string   | null: false              |
+
 
 ### Association
-- belongs to : purchases
+- belongs to : purchase

@@ -70,17 +70,25 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password には英字と数字の両方を含めて設定してください")
       end
-      it 'last_nameとfirst_nameに全角文字を使用しないと登録できない' do
+      it 'last_nameに全角文字を使用しないと登録できない' do
         @user.last_name = 'sato'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name 全角文字を使用してください")
+      end
+      it 'first_nameに全角文字を使用しないと登録できない' do
         @user.first_name = 'taro'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name 全角文字を使用してください", "Last name 全角文字を使用してください")
+        expect(@user.errors.full_messages).to include("First name 全角文字を使用してください")
       end
-      it 'カタカナを使用しないと登録できない' do
+      it 'first_name_kanaはカタカナを使用しないと登録できない' do
         @user.last_name_kana = 'さとう'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name kana カタカナを使用してください")
+      end
+      it 'first_name_kanaはカタカナを使用しないと登録できない' do
         @user.first_name_kana = 'たろう'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name kana カタカナを使用してください", "Last name kana カタカナを使用してください")
+        expect(@user.errors.full_messages).to include("First name kana カタカナを使用してください")
       end
       it 'passwordとpassword_confirmationが不一致では登録できない' do
         @user.password = '123456'
@@ -110,7 +118,6 @@ RSpec.describe User, type: :model do
 
     context 'ユーザー新規登録が成功' do
       it '完璧であれば登録できる' do
-        user = User.new(nickname: 'yuki', email: 'test@example', password: '123qwer', password_confirmation: '123qwer', last_name: '加藤', first_name: '友樹', last_name_kana: 'カトウ',first_name_kana: 'ユウキ',birth_date: '2000.4.1')
         expect(@user).to be_valid
       end
     end

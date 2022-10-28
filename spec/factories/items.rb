@@ -1,13 +1,19 @@
 FactoryBot.define do
   factory :item do
-    nickname              {Faker::Name.initials(number: 2)}
-    email                 {Faker::Internet.free_email}
-    password              {'1a'+ Faker::Internet.password(min_length: 6)}
-    password_confirmation {password}
-    last_name             {'佐藤'}
-    first_name            {'太郎'}
-    last_name_kana        {'サトウ'}
-    first_name_kana       {'タロウ'}
-    birth_date            {'2000.4.1'}
+    image                  {Faker::Lorem.sentence}
+    item_name              {'hoge'}
+    explanation            {'test'}
+    genre_id               {2}
+    commodity_condition_id {2}
+    shipping_charge_id     {2}
+    prefecture_id          {2}
+    days_to_ship_id        {2}
+    selling_price          {'10000'}
+    association :user 
+
+    after(:build) do |item|
+      item.image.attach(io: File.open('public/test_image.png'), filename: 'test_image.png')
+    end
   end
 end
+

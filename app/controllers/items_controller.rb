@@ -49,10 +49,8 @@ class ItemsController < ApplicationController
   end
 
   def correct_item
-    if @item.user.id == current_user.id
-      redirect_to items_path
-    else
-      render root_path
+    if @item.user.id != current_user.id || !@item.purchase.nil?
+      redirect_to root_path
     end
   end
 end

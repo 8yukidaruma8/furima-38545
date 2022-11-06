@@ -2,6 +2,7 @@ class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   has_one_attached :image
   has_one :purchase
+  
   belongs_to :genre
   belongs_to :commodity_condition
   belongs_to :shipping_charge
